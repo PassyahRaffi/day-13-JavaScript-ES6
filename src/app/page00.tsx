@@ -17,7 +17,7 @@ export default function Home() {
     const fetchPokemon = async () => {
       try {
         const data = await P.getPokemonByName(["raichu", "pikachu"]);
-        console.log(data);
+        // console.log(data);
         
         // pastikan hasilnya berupa array
         const pokemonList = Array.isArray(data) ? data : [data];
@@ -32,7 +32,7 @@ export default function Home() {
     };
 
     fetchPokemon();
-  },[]);
+  });
 
   if (loading) {
     return (
@@ -57,9 +57,9 @@ export default function Home() {
       </h1>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-        {pokemons.map((poke, idx) => (
+        {pokemons.map((poke) => (
           <div
-            key={idx}
+            key={poke.id}
             className="border rounded-xl p-4 shadow hover:shadow-lg transition"
           >
             <Image
